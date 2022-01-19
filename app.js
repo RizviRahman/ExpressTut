@@ -17,7 +17,7 @@ const app = express();
 app.use(express.json());
 
 mongoose
-    .connect("mongodb://localhost/todos",{
+    .connect("mongodb+srv://Omee:RizviRahman@learnmongodb.0pijh.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",{
         useNewUrlParser: true,
         useUnifiedTopology: true
     })
