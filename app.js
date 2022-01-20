@@ -2,9 +2,11 @@ const express = require('express');
 
 const mongoose = require ('mongoose');
 
-const adminRouter = require('./router/adminRouter');
+const adminRouter = require('./routeHandler/adminRouter');
 
-const publicRouter = require('./router/publicRouter');
+const publicRouter = require('./routeHandler/publicRouter');
+
+const todoHandler = require('./routeHandler/todoHandler');
 
 env={
     port:3000
@@ -17,7 +19,7 @@ const app = express();
 app.use(express.json());
 
 mongoose
-    .connect("mongodb+srv://Omee:RizviRahman@learnmongodb.0pijh.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",{
+    .connect("mongodb+srv://Omee:RizviRahman@learnmongodb.0pijh.mongodb.net/toDos?retryWrites=true&w=majority",{
         useNewUrlParser: true,
         useUnifiedTopology: true
     })
@@ -32,6 +34,7 @@ mongoose
 
 app.use('/admin',adminRouter);
 app.use('/',publicRouter);
+app.use('/todo',todoHandler);
 
 
 function errorHandler(err, req, res, next){
